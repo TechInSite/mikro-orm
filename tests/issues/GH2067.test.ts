@@ -42,15 +42,15 @@ describe('GH issue 2067', () => {
     await orm2.getSchemaGenerator().createSchema();
   });
 
-  afterAll(() => {
-    orm1.close(true);
-    orm2.close(true);
+  afterAll(async () => {
+    await orm1.close(true);
+    await orm2.close(true);
   });
 
   test('GH issue 2067', async () => {
 
-    await orm1.em.clear();
-    await orm2.em.clear();
+    orm1.em.clear();
+    orm2.em.clear();
 
     let a2: A;
 
